@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import Messages from './dbMessages.js';
 // const Pusher = require("pusher");
 import Pusher from 'pusher';
+import cors from 'cors';
 
 //app config
 const app = express(); //creates the application instance and allows us to write api routes
@@ -19,12 +20,8 @@ const pusher = new Pusher({
 
 //middleware
 app.use(express.json());
+app.use(cors()); //can use cors package instead of res.setHeader
 
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', "*"); //allows request to come from any endpoint
-    res.setHeader('Access-Control-Allow-Headers', '*');
-    next();
-});
 
 //DB config
 const connection_url = 'mongodb+srv://admin:QfwIkDFusKeacmaK@cluster0.u0maz.mongodb.net/whatsappdb?retryWrites=true&w=majority'
