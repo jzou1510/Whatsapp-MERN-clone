@@ -18,7 +18,7 @@ function Chat({messages}) {
             "message": input,
             "name": "demo app",
             "timestamp": "Just now",
-            "received": false,
+            "sender": true,
         });
 
         setInput('');
@@ -49,7 +49,7 @@ function Chat({messages}) {
 
             <div className="chat__body">
                 {messages.map(message => (
-                    <p className={`chat__message ${message.received && 'chat__receiver'}`}> 
+                    <p className={`chat__message ${message.sender && 'chat__sender'}`}> 
                         <span className="chat__name">{message.name}) </span>
                         {message.message}
                         <span className="chat__timestamp"> {message.timestamp} </span>
